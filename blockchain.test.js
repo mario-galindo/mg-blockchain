@@ -22,7 +22,18 @@ describe("Blockchain", () => {
 
   it("validate a valid chain", () => {
     bc2.addBlock("foo");
-
     expect(bc.isValidChain(bc2.chain)).toBe(true);
+  });
+
+  it("Invalidate a chain with a corrupt genesis block", () => {
+    bc2.chain[0].data = "bad data";
+    expect(bc.isValidChain(bc2.chain)).toBe(false);
+  });
+
+  it("Invalidate a corrupt chain", () => {
+    bc2.addBlock("foo");
+    bc2.chain[1].data = "Not foo";
+
+    expect(bc.isValidChain(bc2.chain)).toBe(false);
   });
 });
