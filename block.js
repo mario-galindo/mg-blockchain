@@ -3,7 +3,7 @@ const SHA256 = require("crypto-js/sha256");
 class Block {
   constructor(timestamp, lasthHash, hash, data) {
     this.timestamp = timestamp;
-    this.lasthHash = lasthHash;
+    this.lastHash = lasthHash;
     this.hash = hash;
     this.data = data;
   }
@@ -11,7 +11,7 @@ class Block {
   toString() {
     return `Block - 
         Timestamp: ${this.timestamp}
-        Last Hash: ${this.lasthHash.substring(0, 10)}
+        Last Hash: ${this.lastHash.substring(0, 10)}
         Hash: ${this.hash.substring(0, 10)}
         Data: ${this.data}
       `;
